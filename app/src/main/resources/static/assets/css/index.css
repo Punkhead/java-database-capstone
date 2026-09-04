@@ -1,53 +1,325 @@
-/* this is the style sheet file for index.htlm  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* 
-**Global Reset (`*`)**
+html,
+body {
+    height: 100%;
+    font-family: 'Roboto', Arial, sans-serif;
+}
 
-* Remove all default margin and padding.
-* Use `border-box` for sizing to include padding and border in element size.
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
 
-**Base (`html, body`)**
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-* Set height to 100% for full viewport layout.
-* Use the `'Roboto'` sans-serif font for modern, clean typography.
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
 
-**Layout Wrapper (`.wrapper`)**
+.main-content {
+    flex: 1;
+    min-height: calc(100vh - 120px);
 
-* Use a vertical flexbox layout.
-* Ensure the wrapper covers at least the full height of the screen (`min-height: 100vh`).
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-**Heading (`h2`)**
+    padding: 40px 20px;
+    text-align: center;
 
-* Set a large font size (`48px`) for prominence.
-* Add a bottom margin of `50px` for spacing.
-* Use a dark teal color (`#003e3e`).
-* Make the font bold and use a blended font stack (`'Alegreya', 'Roboto', sans-serif`) for elegant styling.
+    background-image: url('../images/logo/logo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-**Main Section (`.main-content`)**
+.main-content h2 {
+    margin-bottom: 35px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    font-family: 'Roboto', Arial, sans-serif;
+}
 
-* Allow the section to grow to fill space with `flex-grow: 1`.
-* Add `40px` of internal padding.
-* Center content both horizontally and vertically using `justify-content` and `align-items`.
-* Display items in a column direction.
-* Center all text.
-* Apply a full-screen background image with:
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto', Arial, sans-serif;
+}
 
-  * `cover` size
-  * `center` positioning
-  * no repeat
-  * `fixed` attachment to keep image still during scroll
+.main-content > button {
+    width: 220px;
+    margin: 8px 0;
+    padding: 14px 25px;
 
-**Buttons (`button`)**
+    background-color: #3498db;
+    color: #ffffff;
 
-* Style with a teal green background (`#015c5d`) and white text.
-* Remove borders and round the corners (`12px`).
-* Use `10px 20px` padding and set width to `200px`.
-* Add a top margin of `10px` for spacing.
-* Enable pointer cursor and readable font size (`16px`).
-* On hover, change background color to bold red (`#A62B1F`).
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
 
-**Dashboard Buttons (`.dashboard-btn`)**
+    transition:
+            background-color 0.3s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+}
 
-* Use the same base green background (`#015c5d`) as the default button.
-* On hover, darken the background to deep teal (`#003e3e`) for visual feedback.
- */
+.main-content > button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.main-content > button:focus {
+    outline: 3px solid rgba(52, 152, 219, 0.35);
+    outline-offset: 2px;
+}
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
+    margin: 8% auto;
+    padding: 30px;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+
+    color: #777;
+    font-size: 30px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+#closeModal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    background: transparent;
+    color: #777;
+
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#closeModal:hover {
+    color: #000;
+}
+
+/* Form elements */
+
+.input-field,
+.select-dropdown {
+    width: 100%;
+    padding: 12px 14px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.input-field:focus,
+.select-dropdown:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Dashboard buttons */
+
+.dashboard-btn {
+    padding: 10px 20px;
+
+    background-color: #3498db;
+    color: #ffffff;
+
+    border-radius: 6px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Header */
+
+.header {
+    width: 100%;
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 30px;
+
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    position: relative;
+    z-index: 10;
+}
+
+.header img {
+    max-height: 50px;
+    width: auto;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header nav a:hover {
+    color: #3498db;
+}
+
+/* Footer */
+
+.footer {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background-color: #2c3e50;
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.footer section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 30px 15px;
+        background-attachment: scroll;
+    }
+
+    .main-content h2 {
+        font-size: 2rem;
+    }
+
+    .main-content > button {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .header {
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 15% auto;
+        padding: 25px 20px;
+    }
+
+    .footer section {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h2 {
+        font-size: 1.7rem;
+    }
+
+    .main-content > button {
+        font-size: 0.95rem;
+        padding: 12px 20px;
+    }
+}
