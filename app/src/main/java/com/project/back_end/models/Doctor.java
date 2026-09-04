@@ -38,7 +38,7 @@ public class Doctor {
     private String password;
 
     @NotNull
-    @Pattern(regexp = "^[0-9]{10}$")
+    @Pattern(regexp = "\\d{10}")
     private String phone;
 
     @ElementCollection
