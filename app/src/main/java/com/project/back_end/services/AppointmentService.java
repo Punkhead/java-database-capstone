@@ -21,14 +21,14 @@ public class AppointmentService {
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
     private final TokenService tokenService;
-    private final Service service;
+    private final com.project.back_end.services.Service service;
 
     public AppointmentService(
             AppointmentRepository appointmentRepository,
             PatientRepository patientRepository,
             DoctorRepository doctorRepository,
             TokenService tokenService,
-            Service service) {
+            com.project.back_end.services.Service service) {
 
         this.appointmentRepository = appointmentRepository;
         this.patientRepository = patientRepository;
